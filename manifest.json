@@ -1,0 +1,23 @@
+{
+    "name": "CSS DevTools",
+    "version": "0.1",
+    "manifest_version": 2,
+    "description": "An extra developer panel for live editing css",
+    "browser_action": {
+        "default_icon": "editCss_48.png"
+    },
+    "icons": {
+        "128": "editCss_128.png",
+        "48": "editCss_48.png"
+    },
+    "devtools_page": "bootstrap.html",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+    ]
+}
