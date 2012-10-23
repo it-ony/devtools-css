@@ -22,26 +22,27 @@
 
     });
 
-    function checkTabChanged(tabId, changeInfo) {
-        chrome.tabs.getSelected(null, function (tab) {
-            if (tabId == tab.id) {
-                chrome.extension.sendRequest({
-                    type: "tabUpdated",
-                    tabId: tabId,
-                    changeInfo: changeInfo
-                });
-            }
-        });
-    }
-
-    chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-        editCss && editCss.log("tab updated");
-        checkTabChanged(tabId, changeInfo);
-    });
-
-    chrome.tabs.onCreated.addListener(function (tabId, changeInfo, tab) {
-        editCss && editCss.log("tab created");
-        checkTabChanged(tabId, changeInfo);
-    });
+//    function checkTabChanged(tabId, changeInfo) {
+//        chrome.tabs.getSelected(null, function (tab) {
+//            if (tabId == tab.id) {
+//                console.log("send tabUpdated");
+//                chrome.extension.sendMessage({
+//                    type: "tabUpdated",
+//                    tabId: tabId,
+//                    changeInfo: changeInfo
+//                });
+//            }
+//        });
+//    }
+//
+//    chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+//        console.log("tab updated");
+//        checkTabChanged(tabId, changeInfo);
+//    });
+//
+//    chrome.tabs.onCreated.addListener(function (tabId, changeInfo, tab) {
+//        console.log("tab created");
+//        checkTabChanged(tabId, changeInfo);
+//    });
 
 })(chrome);

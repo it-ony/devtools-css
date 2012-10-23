@@ -69,13 +69,14 @@
 
     });
 
-    chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
-        if (editCss && request.type === "tabUpdated") {
-            editCss.refresh();
-        }
+//    chrome.extension.onMessage.addListener(function (message){
+//        editCss && editCss.log("got message" + message.type);
+//
+//        if (editCss && message.type === "tabUpdated") {
+//            editCss.refresh();
+//        }
+//    });
 
-        sendResponse();
-    });
 
 })(chrome);
 
