@@ -1,4 +1,4 @@
-window.editCssView = (function (window, document, $, undefined) {
+ window.editCssView = (function (window, document, $, undefined) {
 
     var editCss,
         ready = false,

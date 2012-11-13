@@ -2,13 +2,14 @@
 
     function EditCss(window) {
         this.window = window;
-        this.view = window.editCssView;
 
-        try {
-            this.view.init(this);
-            this.refresh();
-        } catch (e) {
-            this.log(e);
+        this.log("Constructor in EditCss");
+
+        if (window.start) {
+            this.log("Start panel");
+            window.start(this);
+        } else {
+            this.log("Start function on window not found");
         }
     }
 
@@ -50,9 +51,10 @@
         }
     };
 
-    var editCss;
 
-    chrome.devtools.panels.create("Edit CSS", "editCss_32.png", "editCss.html", function (panel) {
+    chrome.devtools.panels.create("Edit CSS", "public/img/editCss_32.png", "public/panel.html", function (panel) {
+
+        var editCss;
 
         panel.onShown.addListener(function (window) {
             editCss = new EditCss(window);
