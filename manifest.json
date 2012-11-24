@@ -12,7 +12,7 @@
     },
     "devtools_page": "public/chrome/bootstrap.html",
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["public/chrome/background.js"],
         "persistent": false
     },
     "permissions": [

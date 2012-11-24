@@ -3,8 +3,6 @@
     function EditCss(window) {
         this.window = window;
 
-        this.log("Constructor in EditCss");
-
         if (window.start) {
             this.log("Start panel");
             window.start(this);
@@ -17,8 +15,7 @@
 
         log: function (message) {
             try {
-                chrome.extension.sendRequest({
-                    type: "log",
+                this._call("log", {
                     message: message
                 });
             } catch (e) {
@@ -26,28 +23,33 @@
             }
         },
 
-        refresh: function () {
+        _call: function(method, parameter, callback) {
 
-            var self = this;
             chrome.extension.sendRequest({
-                type: "getStyles"
-            }, function (response) {
-                if (response && response.styles instanceof Array) {
-                    // we got styles
-                    self.view.setStyles(response.styles);
-                } else {
-                    self.log(["Styles not found", response.error]);
-                }
-
+                method: method,
+                parameter: parameter || {}
+            }, function(response) {
+                response = response || {};
+                callback && callback(response.error, response.data);
             });
         },
 
-        search: function (action, string) {
+        getStyles: function (callback) {
+            this._call("getStyles", null, callback);
+        },
 
+        getStyle: function (name, callback) {
+            this._call("getStyle", {
+                name: name
+            }, callback);
+        },
+
+        search: function (action, string) {
+            this.log("search");
         },
 
         hide: function () {
-
+            this.log("hide");
         }
     };
 
@@ -57,6 +59,11 @@
         var editCss;
 
         panel.onShown.addListener(function (window) {
+
+            if (editCss) {
+                return;
+            }
+
             editCss = new EditCss(window);
         });
 

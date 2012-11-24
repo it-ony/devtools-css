@@ -1,10 +1,19 @@
-window.editCssView = (function (window, document, undefined) {
+(function (window, undefined) {
 
-    return {
-        init: function (bootstrapper) {
-            console.log = console.warn = console.err = bootstrapper.log;
-            rAppid.bootStrap("editcss/EditCss.xml", document.body);
-        }
-    }
+    window.start = function(cssController) {
+        window.console.log = window.console.warn = window.console.err = function() {
 
-})(window, document);
+            var args = Array.prototype.slice.call(arguments);
+            if (args.length > 1) {
+                cssController.log(args);
+            } else {
+                cssController.log(args[0]);
+            }
+
+        };
+        rAppid.bootStrap("app/EditCss.xml", window.document.body,{
+            cssController: cssController
+        });
+    };
+
+})(window);

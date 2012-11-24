@@ -3,15 +3,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <link rel="stylesheet" href="editcss.css"/>
+    <link rel="stylesheet" href="app/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="app/css/editcss.css"/>
 
-    <script type="text/javascript" src="js/lib/require.js" data-usage="lib"></script>
-    <script type="text/javascript" src="js/lib/rAppid.js" data-usage="lib"></script>
+    <script type="text/javascript" src="js/lib/require.js"></script>
+    <script type="text/javascript" src="js/lib/rAppid.js"></script>
+
+    <!--
+        adds bootstrapping to the window object, which is executed from the chrome/bootstrap.js
+        after the developer panel has been initialized. Must be placed within the panel.js, because
+        inline javascript isn't allowed anymore.
+    -->
     <script type="text/javascript" src="chrome/panel.js"></script>
-
 </head>
 <body>
-    <p>panel.html</p>
-
 </body>
 </html>

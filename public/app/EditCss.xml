@@ -1,3 +1,24 @@
-<app:EditCssClass xmlns="http://www.w3.org/1999/xhtml" xmlns:app="app">
-    <h1>Here</h1>
+<app:EditCssClass xmlns="http://www.w3.org/1999/xhtml"
+                  xmlns:app="app" xmlns:ui="js.ui" xmlns:js="js.core">
+
+    <div>
+        <div id="source-list">
+            <button onclick="refresh">Refresh</button>
+            <div class="header">
+                Styles
+            </div>
+            <ui:SelectionView items="{styles}" selectedItem="{{selectedStyle}}"
+                              itemKey="style" multiSelect="false" >
+                <js:Template name="item">
+                    <li>
+                        <p>{style.name}</p>
+                    </li>
+                </js:Template>
+            </ui:SelectionView>
+        </div>
+        <div>
+            <textarea>{selectedStyle.content}</textarea>
+        </div>
+    </div>
+
 </app:EditCssClass>
