@@ -38,6 +38,16 @@
                 var link = styles[i];
                 var content = fetchCss(link.href);
 
+
+                var base = /^(.*?)[^/]+\.css$/.exec(link.href);
+                if (base) {
+                    var baseUrl = base[1];
+
+                    // make relative links absolute to support correct image resources
+                    content = content.replace(/url\((?!(http|\/\/))([^)]*)\)/g, "url(" + baseUrl + "$2)");
+                }
+
+
                 style = {
                     embedded: false,
                     name: link.href,
