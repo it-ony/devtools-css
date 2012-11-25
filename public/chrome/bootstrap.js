@@ -44,12 +44,23 @@
             }, callback);
         },
 
-        search: function (action, string) {
-            this.log("search");
+        setStyle: function(name, content, callback) {
+            this._call("setStyle", {
+                name: name,
+                content: content
+            }, callback);
         },
 
-        hide: function () {
-            this.log("hide");
+        trigger: function(eventType, event, target) {
+
+            if (this.window && this.window.stage && this.window.stage.$bus) {
+                this.log("Send event " + eventType);
+
+                this.window.stage.$bus.trigger(eventType, event, target);
+                return true;
+            }
+
+            return false;
         }
     };
 
@@ -60,19 +71,20 @@
 
         panel.onShown.addListener(function (window) {
 
-            if (editCss) {
-                return;
+            if (!editCss) {
+                editCss = new EditCss(window);
             }
 
-            editCss = new EditCss(window);
+            editCss && editCss.trigger("Panel.Show");
+
         });
 
         panel.onSearch.addListener(function (action, string) {
-            editCss && editCss.search(action, string);
+
         });
 
         panel.onHidden.addListener(function () {
-            editCss && editCss.hide();
+            editCss && editCss.trigger("Panel.Hide");
         });
 
 

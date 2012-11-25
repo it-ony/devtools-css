@@ -11,8 +11,15 @@
             }
 
         };
-        rAppid.bootStrap("app/EditCss.xml", window.document.body,{
+
+        rAppid.bootStrap("app/EditCss.xml", window.document.body, {
             cssController: cssController
+        }, null, function(err, stage, application) {
+            err && window.console.log(err);
+
+            window.stage = stage;
+            window.application = application;
+
         });
     };
 
