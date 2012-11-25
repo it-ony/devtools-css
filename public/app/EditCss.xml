@@ -17,7 +17,7 @@
             </ui:SelectionView>
         </div>
         <div>
-            <textarea>{{selectedStyle.content}}</textarea>
+            <textarea updateOnEvent="keyup">{{selectedStyle.content}}</textarea>
         </div>
     </div>
 
