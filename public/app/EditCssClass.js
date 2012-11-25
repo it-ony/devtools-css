@@ -47,6 +47,11 @@ define(['js/core/Application', 'js/core/List', 'app/model/Style', 'flow'], funct
                 })
                 .exec();
 
-        }
+        },
+
+        bus_show: function() {
+            this.refresh();
+        }.bus("Panel.Show")
+
     });
 });
