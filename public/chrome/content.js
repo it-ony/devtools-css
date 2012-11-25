@@ -17,7 +17,6 @@
                 } catch (e) {
                     callback(e);
                 }
-
             }
         };
 
@@ -152,12 +151,19 @@
 
     }
 
-    function setStyle(name, style) {
+    function setStyle(name, content) {
         var styleEntry = _styleCache[name];
 
         if (!styleEntry) {
             throw new Error("style entry not found");
         } else {
+
+            if (typeof console !== "undefined") {
+                console.log("got content for " + name + "." + content);
+            }
+
+            styleEntry.style.content = content;
+            styleEntry.node.innerHTML = content;
 
         }
     }
