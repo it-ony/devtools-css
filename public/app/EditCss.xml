@@ -1,14 +1,22 @@
 <app:EditCssClass xmlns="http://www.w3.org/1999/xhtml"
                   xmlns:app="app" xmlns:ui="js.ui" xmlns:js="js.core">
 
-    <div>
+    <!--<style type="text/css">-->
+        <!--{style}-->
+    <!--</style>-->
+
+    <!--<textarea id="style" updateOnEvent="keyup">{{style}}</textarea>-->
+
+    <div id="editcss" class="fill">
         <div id="source-list">
-            <button onclick="refresh">Refresh</button>
             <div class="header">
                 Styles
+                <div class="buttons">
+                    <button class="refresh" onclick="refresh" />
+                </div>
             </div>
             <ui:SelectionView items="{styles}" selectedItem="{{selectedStyle}}"
-                              itemKey="style" multiSelect="false" >
+                              itemKey="style" multiSelect="false" tagName="ul">
                 <js:Template name="item">
                     <li>
                         <p>{style.name}</p>
@@ -16,7 +24,7 @@
                 </js:Template>
             </ui:SelectionView>
         </div>
-        <div>
+        <div id="source-view">
             <textarea updateOnEvent="keyup">{{selectedStyle.content}}</textarea>
         </div>
     </div>

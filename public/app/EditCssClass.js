@@ -1,8 +1,9 @@
-define(['js/core/Application', 'js/core/List', 'app/model/Style', 'flow'], function(Application, List, Style, flow) {
+define(['js/core/Application', 'js/core/List', 'app/model/Style'], function(Application, List, Style) {
     return Application.inherit('app.EditCssClass', {
         defaults: {
             styles: List,
-            selectedStyle: null
+            selectedStyle: null,
+            style: ""
         },
 
         start: function(parameter, callback) {
@@ -41,12 +42,7 @@ define(['js/core/Application', 'js/core/List', 'app/model/Style', 'flow'], funct
                 }
             });
 
-            flow()
-                .parEach(self.$.styles.$items, function(style, cb) {
-                    style.fetch(null, cb);
-                })
-                .exec();
-
+            this.set('selectedStyle', this.$.styles.at(0));
         },
 
         bus_show: function() {
