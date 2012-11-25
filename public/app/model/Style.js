@@ -21,6 +21,21 @@ define(['js/data/Model'], function(Model) {
             } else {
                 callback(null, this, options);
             }
+        },
+
+        save: function(options, callback) {
+            this.cssController.setStyle(this.$.name, this.$.content, callback);
+        },
+
+        _commitContent: function() {
+            var self = this;
+
+            clearTimeout(this.timeout);
+
+            this.timeout = setTimeout(function() {
+                self.cssController.log("save");
+                self.save();
+            }, 500);
         }
     });
 });
