@@ -1,6 +1,6 @@
 {
     "name": "CSS DevTools",
-    "version": "0.1",
+    "version": "0.1.0",
     "manifest_version": 2,
     "description": "An extra developer panel for live editing css",
     "browser_action": {
@@ -8,7 +8,9 @@
     },
     "icons": {
         "128": "public/img/editCss_128.png",
-        "48": "public/img/editCss_48.png"
+        "96": "public/img/editCss_96.png",
+        "48": "public/img/editCss_48.png",
+        "32": "public/img/editCss_32.png"
     },
     "devtools_page": "public/chrome/bootstrap.html",
     "background": {
