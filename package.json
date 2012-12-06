@@ -1,0 +1,11 @@
+{
+  "name": "edit-css",
+  "version": "0.1.0",
+  "author": "it-ony <chrome@it-ony.de> (http://it-ony.de)",
+  "description": "A css edit panel for chrome developer tools",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/it-ony/devtools-css.git"
+  },
+  "homepage": "http://it-ony.de"
+}
